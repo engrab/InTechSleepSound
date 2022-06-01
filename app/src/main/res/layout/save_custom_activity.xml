@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/save_custom_bg_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_save_custom_bg">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/close_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="14dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/vector_ic_close_save_custom" />
+
+        <TextView
+            android:id="@+id/mix_sound_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/close_view"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mix_sound_name_et"
+            style="@style/EditTextStyle"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mix_sound_name_tv"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textColor="#ff1b2646"
+            android:textCursorDrawable="@drawable/shape_edit_text_cursor"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="160dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/mix_sound_name_et"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:background="#0a1b2646" />
+
+        <TextView
+            android:id="@+id/mix_sound_cover_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mix_sound_name_et"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@string/cover"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mix_sound_cover_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mix_sound_cover_tv"
+            android:layout_marginTop="16dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/select_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/mix_sound_cover_rcv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/shape_checked_bg"
+            android:padding="15dp"
+            app:srcCompat="@drawable/vector_ic_done" />
+    </RelativeLayout>
+</RelativeLayout>

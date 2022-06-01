@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_56sdp"
+        android:layout_marginStart="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:fontFamily="@string/roboto_medium"
+            android:gravity="left|center_vertical|center_horizontal|center|start"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/set_time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_custom_bottom_ad"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_custom_indicator">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/vector_ic_set_time" />
+
+        <TextView
+            android:id="@+id/play_count_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/count_time_zero"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/custom_play_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/selector_play_bt_bg"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/set_time_layout"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_67"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_33"
+        app:layout_constraintTop_toTopOf="@+id/set_time_layout">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/custom_play_iv"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/vector_ic_play" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/custom_save_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/set_time_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_67"
+        app:layout_constraintTop_toTopOf="@+id/set_time_layout">
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/select_iv"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/selected"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_iv" />
+
+        <TextView
+            android:id="@+id/sound_count_tv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_checked_bg"
+            android:gravity="center"
+            android:text="8"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/select_iv"
+            app:layout_constraintStart_toStartOf="@+id/select_iv" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/select_iv"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/vector_ic_sound" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.arapps.sleepsound.relaxandsleep.naturesounds.customView.WrapContentViewPager
+        android:id="@+id/fragment_custom_vp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_310sdp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_custom_indicator"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <io.github.kshitij_jain.indicatorview.IndicatorView
+        android:id="@+id/fragment_custom_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:activeColor="@color/white"
+        app:inactiveColor="@color/white_20"
+        app:layout_constraintBottom_toTopOf="@+id/custom_play_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_custom_vp" />
+
+    <LinearLayout
+        android:id="@+id/fragment_custom_bottom_ad"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_56sdp"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

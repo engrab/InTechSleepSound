@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/cover_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cover_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:actualImageScaleType="focusCrop"
+            app:failureImage="@drawable/pic_blue_light_bg"
+            app:failureImageScaleType="focusCrop"
+            app:layout_aspectRatio="139.9994%"
+            app:layout_widthPercent="100%"
+            app:placeholderImage="@drawable/pic_blue_light_bg"
+            app:roundedCornerRadius="12dp" />
+
+        <ImageView
+            android:id="@+id/ads_icon"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignTop="@+id/cover_image"
+            android:layout_alignEnd="@+id/cover_image"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            app:srcCompat="@drawable/pic_ic_sound_premium" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/cover_image"
+            android:layout_alignBottom="@+id/cover_image"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/view_play_state_bg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_adjust_mix_sound_bg"
+            android:visibility="invisible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_play_state"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/vector_ic_play" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/mix_sound_tag_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_custom_cover_tag"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:paddingStart="6dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/custom"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+</LinearLayout>

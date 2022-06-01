@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_1"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/custom_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/custom"
+        android:textColor="@color/white_50"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/custom_set_time_np_margin_top"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+
+            android:text="@string/custom_set_time_hour"
+            android:textColor="@color/white_50"
+            android:textSize="14sp" />
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/set_time_np_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:np_dividerColor="@color/transparent"
+            app:np_max="23"
+            app:np_min="0"
+            app:np_selectedTextColor="@color/white"
+            app:np_selectedTextSize="40sp"
+            app:np_textColor="@color/white_50"
+            app:np_textSize="30sp"
+
+            app:np_value="0"
+            app:np_wheelItemCount="5"
+            app:np_width="65dp"
+            app:np_wrapSelectorWheel="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+
+            android:text=":"
+            android:textColor="@color/white_50"
+            android:textSize="36sp" />
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/set_time_np_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:np_dividerColor="@color/transparent"
+            app:np_max="59"
+            app:np_min="0"
+            app:np_selectedTextColor="@color/white"
+            app:np_selectedTextSize="40sp"
+            app:np_textColor="@color/white_50"
+            app:np_textSize="30sp"
+
+            app:np_value="15"
+            app:np_wheelItemCount="5"
+            app:np_width="65dp"
+            app:np_wrapSelectorWheel="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+
+            android:text="@string/custom_set_time_minute"
+            android:textColor="@color/white_50"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:id="@+id/cancel_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/vector_ic_circle_bg_close" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/cancel"
+                android:textColor="@color/white_30"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/save_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_checked_bg"
+            android:padding="15dp"
+            app:srcCompat="@drawable/vector_ic_done" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7" />
+</LinearLayout>

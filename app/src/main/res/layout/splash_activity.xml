@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_bgsplash" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ic_moon_main" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_italic_file"
+                    android:shadowColor="#0000"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="SLEEP SOUND"
+                    android:textColor="#fafafa"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="0.8dp"
+                android:layout_margin="5dp"
+                android:background="#ffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center_horizontal"
+                android:lineSpacingMultiplier="1.06"
+                android:shadowColor="#0000"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Presented by AR Ideal Games"
+                android:textAllCaps="true"
+                android:textColor="#fafafa"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>
