@@ -128,7 +128,7 @@ public class DeleteCustomMixActivityBase extends ActivityBase implements OnClick
     private void DeleteMix() {
         HelperSaveData.removeCustomMixInJSONArray(this, this.modelMix);
         SoundList.createData(this);
-        Toast.makeText(this, R.string.delete_success, 0).show();
+        Toast.makeText(this, R.string.delete_success, Toast.LENGTH_SHORT).show();
         finish();
     }
 }

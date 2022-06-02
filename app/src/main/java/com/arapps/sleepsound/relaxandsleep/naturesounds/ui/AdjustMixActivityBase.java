@@ -32,12 +32,12 @@ import androidx.recyclerview.widget.RecyclerView.State;
 import androidx.work.WorkRequest;
 
 import com.arapps.sleepsound.relaxandsleep.naturesounds.R;
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.baseClasses.ActivityBase;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.SoundList;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.model.ModelMix;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerManager;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService;
-import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.DisplayUtil;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.Utils;
 import com.google.android.gms.ads.AdView;
@@ -134,10 +134,8 @@ public class AdjustMixActivityBase extends ActivityBase implements OnClickListen
         DisplayUtil.setFullScreenActivity(this);
         setContentView(R.layout.adjust_mix_activity);
 
-        RelativeLayout relativeLayout = findViewById(R.id.ads_lays);
-        AdView adView = findViewById(R.id.main_medium2);
+        AdsUtils.showBanner(AdjustMixActivityBase.this, findViewById(R.id.llAds));
 
-        AdsUtils.ShowBanner(AdjustMixActivityBase.this, relativeLayout);
 
         this.mModelMix = SoundPlayerManager.getInstance(this).getMixItem();
         InitView();

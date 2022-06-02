@@ -23,7 +23,7 @@ public class ShareUtil {
         Intent intent = new Intent("android.intent.action.SENDTO", Uri.parse(stringBuilder.toString()));
         List queryIntentActivities = context.getPackageManager().queryIntentActivities(intent, 65536);
         if (queryIntentActivities == null || queryIntentActivities.size() <= 0) {
-            Toast.makeText(context, "No email application", 0).show();
+            Toast.makeText(context, "No email application", Toast.LENGTH_SHORT).show();
         } else {
             context.startActivity(intent);
         }

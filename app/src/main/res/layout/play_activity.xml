@@ -29,7 +29,7 @@
         <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="?actionBarSize"
             android:layout_marginTop="@dimen/full_screen_status_bar_hide_height">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -207,25 +207,11 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/ads_lays"
+    <LinearLayout
+        android:id="@+id/llAds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-
-
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/main_medium2"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:adSize="SMART_RECTANGLE"
-            app:adUnitId="@string/app_banner" />
-
-
-    </RelativeLayout>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal" />
 </LinearLayout>

@@ -162,7 +162,7 @@ public class BaseSoundFragment extends FragmentBase {
                     soundFragment.startActivity(new Intent(soundFragment.getActivity(), CustomSelectActivityBase.class));
                     return;
                 }
-                Toast.makeText(BaseSoundFragment.this.getActivity(), "Choose a sound to create your custom", 0).show();
+                Toast.makeText(BaseSoundFragment.this.getActivity(), "Choose a sound to create your custom", Toast.LENGTH_SHORT).show();
             }
         });
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(this.broadcastReceiver3, new IntentFilter(SoundPlayerService.ACTION_UPDATE_TIME));

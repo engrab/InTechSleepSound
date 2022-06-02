@@ -131,13 +131,13 @@ public class SaveCustomActivityBase extends ActivityBase implements OnClickListe
             modelMix.setmMixSoundCover(this.modelMixCoverClick);
             modelMix.setmSoundList(SoundPlayerManager.getInstance(this).getPlayingSoundItem());
             modelMix.setmMixSoundId(customMixList.size());
-            Toast.makeText(this, R.string.save_successfully, 0).show();
+            Toast.makeText(this, R.string.save_successfully, Toast.LENGTH_SHORT).show();
             HelperSaveData.addCustomMixInJSONArray(this, modelMix);
             SoundList.createData(this);
             finish();
             return;
         }
-        Toast.makeText(this, "You have reach max save custom mix", 0).show();
+        Toast.makeText(this, "You have reach max save custom mix", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

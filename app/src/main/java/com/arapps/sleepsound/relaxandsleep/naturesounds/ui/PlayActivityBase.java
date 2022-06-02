@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView.State;
 import androidx.work.WorkRequest;
 
 import com.arapps.sleepsound.relaxandsleep.naturesounds.R;
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.baseClasses.ActivityBase;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.Constant;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.SoundList;
@@ -35,7 +36,6 @@ import com.arapps.sleepsound.relaxandsleep.naturesounds.model.ModelMix;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.model.ModelSound;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerManager;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService;
-import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.DisplayUtil;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.SharedPrefsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.TimeUtils;
@@ -135,10 +135,8 @@ public class PlayActivityBase extends ActivityBase implements OnClickListener {
         DisplayUtil.setFullScreenActivity(this);
         setContentView(R.layout.play_activity);
 
-        RelativeLayout relativeLayout = findViewById(R.id.ads_lays);
-        AdView adView = findViewById(R.id.main_medium2);
+        AdsUtils.showBanner(PlayActivityBase.this, findViewById(R.id.llAds));
 
-        AdsUtils.ShowBanner(PlayActivityBase.this, relativeLayout);
         this.modelMix = SoundPlayerManager.getInstance(this).getMixItem();
         if (this.modelMix == null) {
             finish();

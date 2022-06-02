@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+//    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.arapps.sleepsound.relaxandsleep.naturesounds"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -22,26 +22,28 @@ android {
 
     }
 
-        buildTypes {
+    buildTypes {
 
-            debug {
-                minifyEnabled true
-                shrinkResources true
+        debug {
+            minifyEnabled true
+            shrinkResources true
 
-                resValue "string", "app_id", "ca-app-pub-3940256099942544~3347511713"
-                resValue "string", "app_banner", "ca-app-pub-3940256099942544/6300978111"
-                resValue "string", "app_intersterial", "ca-app-pub-3940256099942544/1033173712"
+            resValue 'string', 'open_app_id', '"ca-app-pub-3940256099942544/3419835294"'
+            resValue 'string', 'interstitial_id', '"ca-app-pub-3940256099942544/1033173712"'
+            resValue 'string', 'banner_id', '"ca-app-pub-3940256099942544/6300978111"'
+            resValue 'string', 'native_id', '"ca-app-pub-3940256099942544/1044960115"'
+            resValue 'string', 'app_id', '"ca-app-pub-3940256099942544~3347511713"'
 
-
-
-
-            }
+        }
 
         release {
 
-            resValue "string", "app_id", "ca-app-pub-7782605870598518~1990238204"
-            resValue "string", "app_banner", "ca-app-pub-7782605870598518/5534538028"
-            resValue "string", "app_intersterial", "ca-app-pub-7782605870598518/5737911522"
+            resValue 'string', 'open_app_id', '"ca-app-pub-3940256099942544/3419835294"'
+            resValue 'string', 'interstitial_id', '"ca-app-pub-3940256099942544/1033173712"'
+            resValue 'string', 'banner_id', '"ca-app-pub-3940256099942544/6300978111"'
+            resValue 'string', 'native_id', '"ca-app-pub-3940256099942544/1044960115"'
+            resValue 'string', 'app_id', '"ca-app-pub-3940256099942544~3347511713"'
+
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -55,28 +57,39 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     implementation 'io.github.ShawnLin013:number-picker:2.4.13'
-    implementation 'com.google.android.gms:play-services-ads:19.8.0'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
     //rounded image
-    implementation 'com.squareup.okhttp3:okhttp-ws:3.4.1'
+//    implementation 'com.squareup.okhttp3:okhttp-ws:3.4.2'
     implementation 'net.idik:slimadapter:2.1.2'
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.facebook.fresco:fresco:2.1.0'
-//    implementation 'com.facebook.android:audience-network-sdk:6.+'
+    implementation 'com.facebook.fresco:fresco:2.6.0'
     implementation 'com.github.Kshitij-Jain:IndicatorView:1.25'
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation 'androidx.exifinterface:exifinterface:1.3.2'
+    implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
-    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
-    // or compile 'com.android.support:percent:23.1.0'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // admob ads
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'com.google.ads.mediation:facebook:6.11.0.0'
+    //unity facebook
+    implementation "com.unity3d.mediation:mediation-sdk:0.4.0"
+    implementation "com.unity3d.mediation:unityads-adapter:0.4.0"
+    implementation "com.unity3d.mediation:facebook-adapter:0.4.0"
+
+    def lifecycle_version = "2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    def work_version = "2.7.1"
+    implementation "androidx.work:work-runtime:$work_version"
 }

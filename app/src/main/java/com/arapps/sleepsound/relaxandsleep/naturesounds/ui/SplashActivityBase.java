@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.baseClasses.ActivityBase;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.SoundList;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.R;
-import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.DisplayUtil;
 
 public class SplashActivityBase extends ActivityBase {
@@ -20,7 +19,7 @@ public class SplashActivityBase extends ActivityBase {
         super.onCreate(bundle);
         DisplayUtil.setFullScreenActivity(this);
         setContentView(R.layout.splash_activity);
-        AdsUtils.LoadInterstitial(SplashActivityBase.this);
+
         this.imgMoon = findViewById(R.id.imageView);
         this.imgMoon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slideup));
         DisplayUtil.hideActionBar(this);
@@ -29,7 +28,7 @@ public class SplashActivityBase extends ActivityBase {
             public void run() {
 
                 SplashActivityBase.this.startActivity(new Intent(SplashActivityBase.this, MainActivityBase.class));
-                AdsUtils.ShowInterstitial(SplashActivityBase.this);
+
                 SplashActivityBase.this.finish();
 
             }

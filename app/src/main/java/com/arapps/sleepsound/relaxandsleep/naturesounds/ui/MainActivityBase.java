@@ -8,7 +8,11 @@ import android.widget.RelativeLayout;
 
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.AdsUtils;
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.Unity;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemReselectedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
@@ -20,9 +24,10 @@ import com.arapps.sleepsound.relaxandsleep.naturesounds.fragment.BaseSoundFragme
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.SoundList;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.R;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService;
-import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.DisplayUtil;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.customView.PagerBaseNoScroll;
+import com.unity3d.mediation.IInterstitialAdShowListener;
+import com.unity3d.mediation.errors.ShowError;
 
 public class MainActivityBase extends ActivityBase {
 
@@ -31,6 +36,8 @@ public class MainActivityBase extends ActivityBase {
     BottomNavigationView bottomNavigationView;
     PagerBaseNoScroll pagerBaseNoScroll;
     StringBuilder stringBuilder;
+    private InterstitialAd mInterstitialAd;
+
 
 
     @Override
@@ -39,10 +46,10 @@ public class MainActivityBase extends ActivityBase {
         setContentView(R.layout.main_activity);
 
 
-        RelativeLayout relativeLayout = findViewById(R.id.ads_lays);
-        AdView adView = findViewById(R.id.main_medium2);
+        AdsUtils.loadInterstitial(MainActivityBase.this);
+        Unity.initializeSdk(MainActivityBase.this);
+        AdsUtils.showBanner(MainActivityBase.this, findViewById(R.id.llAds));
 
-        AdsUtils.ShowBanner(MainActivityBase.this, relativeLayout);
         bottomNavigationView = findViewById(R.id.nav_view);
         pagerBaseNoScroll = findViewById(R.id.nav_host_fragment);
         DisplayUtil.hideActionBar(this);
@@ -71,15 +78,99 @@ public class MainActivityBase extends ActivityBase {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_mix:
-                        AdsUtils.ShowInterstitial(MainActivityBase.this);
-                        pagerBaseNoScroll.setCurrentItem(0, true);
+
+
+
+                        mInterstitialAd = AdsUtils.getInterstitial();
+                        if (mInterstitialAd != null) {//admob
+                            mInterstitialAd.show(MainActivityBase.this);
+                            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                                @Override
+                                public void onAdDismissedFullScreenContent() {
+                                    super.onAdDismissedFullScreenContent();
+                                    pagerBaseNoScroll.setCurrentItem(0, true);
+                                    AdsUtils.loadInterstitial(MainActivityBase.this);
+                                }
+                            });
+                        } else if (Unity.isAdLoaded()) {//unity fb
+                            Unity.showInterstitial(MainActivityBase.this, new IInterstitialAdShowListener() {
+                                @Override
+                                public void onInterstitialShowed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                }
+
+                                @Override
+                                public void onInterstitialClicked(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                }
+
+                                @Override
+                                public void onInterstitialClosed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+                                    pagerBaseNoScroll.setCurrentItem(0, true);
+                                    Unity.loadInterstitial(MainActivityBase.this);//load unity ads
+                                }
+
+                                @Override
+                                public void onInterstitialFailedShow(com.unity3d.mediation.InterstitialAd interstitialAd, ShowError showError, String s) {
+
+                                }
+
+                            });
+                            AdsUtils.loadInterstitial(MainActivityBase.this);//load admob ad
+                        } else {
+                            pagerBaseNoScroll.setCurrentItem(0, true);
+                            AdsUtils.loadInterstitial(MainActivityBase.this);//load admob ad
+                            Unity.loadInterstitial(MainActivityBase.this);//load unity ads
+                        }
+
                         break;
                     case R.id.navigation_setting:
                         pagerBaseNoScroll.setCurrentItem(2, true);
                         break;
                     case R.id.navigation_sound:
-                        AdsUtils.ShowInterstitial(MainActivityBase.this);
-                        pagerBaseNoScroll.setCurrentItem(1, true);
+
+                        mInterstitialAd = AdsUtils.getInterstitial();
+                        if (mInterstitialAd != null) {//admob
+                            mInterstitialAd.show(MainActivityBase.this);
+                            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                                @Override
+                                public void onAdDismissedFullScreenContent() {
+                                    super.onAdDismissedFullScreenContent();
+                                    pagerBaseNoScroll.setCurrentItem(1, true);
+                                    AdsUtils.loadInterstitial(MainActivityBase.this);
+                                }
+                            });
+                        } else if (Unity.isAdLoaded()) {//unity fb
+                            Unity.showInterstitial(MainActivityBase.this, new IInterstitialAdShowListener() {
+                                @Override
+                                public void onInterstitialShowed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                }
+
+                                @Override
+                                public void onInterstitialClicked(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                }
+
+                                @Override
+                                public void onInterstitialClosed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+                                    pagerBaseNoScroll.setCurrentItem(1, true);
+                                    Unity.loadInterstitial(MainActivityBase.this);//load unity ads
+                                }
+
+                                @Override
+                                public void onInterstitialFailedShow(com.unity3d.mediation.InterstitialAd interstitialAd, ShowError showError, String s) {
+
+                                }
+
+                            });
+                            AdsUtils.loadInterstitial(MainActivityBase.this);//load admob ad
+                        } else {
+                            pagerBaseNoScroll.setCurrentItem(1, true);
+                            AdsUtils.loadInterstitial(MainActivityBase.this);//load admob ad
+                            Unity.loadInterstitial(MainActivityBase.this);//load unity ads
+                        }
+
                         break;
                 }
                 return false;
@@ -113,6 +204,11 @@ public class MainActivityBase extends ActivityBase {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(MainActivityBase.this, ExitActivity.class));
+        finish();
+    }
 
     @Override
     public void onDestroy() {

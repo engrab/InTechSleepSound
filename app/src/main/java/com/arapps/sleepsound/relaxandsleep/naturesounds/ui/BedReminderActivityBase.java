@@ -131,7 +131,7 @@ public class BedReminderActivityBase extends ActivityBase implements OnClickList
                 SharedPrefsUtils.setBooleanPreference(this, str, false);
                 AlarmUtils.cancelBedAlarm(this);
             }
-            Toast.makeText(this, R.string.set_success, 0).show();
+            Toast.makeText(this, R.string.set_success, Toast.LENGTH_SHORT).show();
             finish();
         } else if (id == R.id.bed_remind_set_time_view && this.mBedRemindSwitch.isChecked()) {
             startActivity(new Intent(this, SetBedTimeActivity.class));

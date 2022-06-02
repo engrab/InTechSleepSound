@@ -15,6 +15,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
+        android:layout_above="@id/llAds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -105,7 +106,7 @@
                 android:text="Spring"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
-<!--            android:fontFamily="@font/roboto_regular/roboto_regular"-->
+            <!--            android:fontFamily="@font/roboto_regular/roboto_regular"-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mix_sound_rcv"
@@ -128,26 +129,13 @@
         app:theme="@style/td_toolbar_theme"
         app:titleTextAppearance="@style/td_toolbar_title" />
 
-    <RelativeLayout
-        android:id="@+id/ads_lays"
+
+
+    <LinearLayout
+        android:id="@+id/llAds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-
-
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/main_medium2"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:adSize="SMART_RECTANGLE"
-            app:adUnitId="@string/app_banner" />
-
-
-    </RelativeLayout>
+        android:gravity="center"
+        android:orientation="horizontal" />
 </RelativeLayout>

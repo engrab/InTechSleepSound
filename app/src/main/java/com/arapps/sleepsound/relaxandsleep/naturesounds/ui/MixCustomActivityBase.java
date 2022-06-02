@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 import com.arapps.sleepsound.relaxandsleep.naturesounds.adapter.AdapterViewPagerWrap;
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.AdsUtils;
+import com.arapps.sleepsound.relaxandsleep.naturesounds.ads.Unity;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.baseClasses.ActivityBase;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.fragment.BaseSoundListCustomFragment;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.helper.HelperSaveData;
@@ -26,9 +28,12 @@ import com.arapps.sleepsound.relaxandsleep.naturesounds.model.ModelSound;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.R;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerManager;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService;
-import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.AdsUtils;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.utils.DisplayUtil;
 import com.arapps.sleepsound.relaxandsleep.naturesounds.customView.BasePagerWrapContent;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.unity3d.mediation.IInterstitialAdShowListener;
+import com.unity3d.mediation.errors.ShowError;
 
 import net.idik.lib.slimadapter.SlimAdapter;
 import net.idik.lib.slimadapter.SlimInjector;
@@ -55,6 +60,7 @@ public class MixCustomActivityBase extends ActivityBase implements OnClickListen
     private List<ModelSound> soundList = new ArrayList();
     private AdapterViewPagerWrap viewPagerAdapter;
     int adcount = 1;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -122,17 +128,69 @@ public class MixCustomActivityBase extends ActivityBase implements OnClickListen
 
                         if (adcount % 2 == 0) {
 
-                            AdsUtils.ShowInterstitial(getApplicationContext());
 
-                            Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), 0).show();
-                            Intent intent = new Intent(MixCustomActivityBase.this, SoundPlayerService.class);
-                            intent.setAction(SoundPlayerService.ACTION_CMD);
-                            intent.putExtra(SoundPlayerService.CMD_NAME, SoundPlayerService.CMD_RELEASE);
-                            intent.putExtra(SoundPlayerService.SOUND_ID, modelSound.getmSoundId());
-                            MixCustomActivityBase.this.startService(intent);
+
+
+                            mInterstitialAd = AdsUtils.getInterstitial();
+                            if (mInterstitialAd != null) {//admob
+                                mInterstitialAd.show(MixCustomActivityBase.this);
+                                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                                    @Override
+                                    public void onAdDismissedFullScreenContent() {
+                                        super.onAdDismissedFullScreenContent();
+                                        Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(MixCustomActivityBase.this, SoundPlayerService.class);
+                                        intent.setAction(SoundPlayerService.ACTION_CMD);
+                                        intent.putExtra(SoundPlayerService.CMD_NAME, SoundPlayerService.CMD_RELEASE);
+                                        intent.putExtra(SoundPlayerService.SOUND_ID, modelSound.getmSoundId());
+                                        MixCustomActivityBase.this.startService(intent);
+                                        AdsUtils.loadInterstitial(MixCustomActivityBase.this);
+                                    }
+                                });
+                            } else if (Unity.isAdLoaded()) {//unity fb
+                                Unity.showInterstitial(MixCustomActivityBase.this, new IInterstitialAdShowListener() {
+                                    @Override
+                                    public void onInterstitialShowed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                    }
+
+                                    @Override
+                                    public void onInterstitialClicked(com.unity3d.mediation.InterstitialAd interstitialAd) {
+
+                                    }
+
+                                    @Override
+                                    public void onInterstitialClosed(com.unity3d.mediation.InterstitialAd interstitialAd) {
+                                        Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(MixCustomActivityBase.this, SoundPlayerService.class);
+                                        intent.setAction(SoundPlayerService.ACTION_CMD);
+                                        intent.putExtra(SoundPlayerService.CMD_NAME, SoundPlayerService.CMD_RELEASE);
+                                        intent.putExtra(SoundPlayerService.SOUND_ID, modelSound.getmSoundId());
+                                        MixCustomActivityBase.this.startService(intent);
+                                        Unity.loadInterstitial(MixCustomActivityBase.this);//load unity ads
+                                    }
+
+                                    @Override
+                                    public void onInterstitialFailedShow(com.unity3d.mediation.InterstitialAd interstitialAd, ShowError showError, String s) {
+
+                                    }
+
+                                });
+                                AdsUtils.loadInterstitial(MixCustomActivityBase.this);//load admob ad
+                            } else {
+                                Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MixCustomActivityBase.this, SoundPlayerService.class);
+                                intent.setAction(SoundPlayerService.ACTION_CMD);
+                                intent.putExtra(SoundPlayerService.CMD_NAME, SoundPlayerService.CMD_RELEASE);
+                                intent.putExtra(SoundPlayerService.SOUND_ID, modelSound.getmSoundId());
+                                MixCustomActivityBase.this.startService(intent);
+                                AdsUtils.loadInterstitial(MixCustomActivityBase.this);//load admob ad
+                                Unity.loadInterstitial(MixCustomActivityBase.this);//load unity ads
+                            }
+
 
                         } else {
-                            Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), 0).show();
+                            Toast.makeText(MixCustomActivityBase.this, modelSound.getmStrName(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MixCustomActivityBase.this, SoundPlayerService.class);
                             intent.setAction(SoundPlayerService.ACTION_CMD);
                             intent.putExtra(SoundPlayerService.CMD_NAME, SoundPlayerService.CMD_RELEASE);
@@ -209,11 +267,11 @@ public class MixCustomActivityBase extends ActivityBase implements OnClickListen
                 ModelMix modelMix = this.modelMix;
                 if (modelMix == null) {
                     Reset();
-                    Toast.makeText(this, "Reset mix", 0).show();
+                    Toast.makeText(this, "Reset mix", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 modelMix.setmSoundList(SoundPlayerManager.getInstance(this).getPlayingSoundItem());
-                Toast.makeText(this, R.string.save_successfully, 0).show();
+                Toast.makeText(this, R.string.save_successfully, Toast.LENGTH_SHORT).show();
                 HelperSaveData.addCustomMixInJSONArray(this, this.modelMix);
                 SoundList.createData(this);
                 finish();
@@ -252,7 +310,7 @@ public class MixCustomActivityBase extends ActivityBase implements OnClickListen
             this.slimAdapter.notifyDataSetChanged();
             this.mCustomSoundsRcv.scrollToPosition(this.soundList.size() - 1);
         } else if (SoundPlayerManager.getInstance(this).isMaxPlayerStart()) {
-            Toast.makeText(this, String.format(getString(R.string.max_select_toast), "8"), 0).show();
+            Toast.makeText(this, String.format(getString(R.string.max_select_toast), "8"), Toast.LENGTH_SHORT).show();
         }
     }
 

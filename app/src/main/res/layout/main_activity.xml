@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/llAds"
         android:orientation="vertical">
 
         <com.arapps.sleepsound.relaxandsleep.naturesounds.customView.PagerBaseNoScroll
@@ -32,32 +33,18 @@
             app:menu="@menu/bottom_nav_menu" />
 
 
-                <RelativeLayout
-                    android:id="@+id/ads_lays"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal">
-
-
-
-                    <com.google.android.gms.ads.AdView
-                        android:id="@+id/main_medium2"
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        app:adSize="SMART_RECTANGLE"
-                        app:adUnitId="@string/app_banner" />
-
-
-                </RelativeLayout>
     </LinearLayout>
 
 
 
 
+    <LinearLayout
+        android:id="@+id/llAds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" />
 
 
 
