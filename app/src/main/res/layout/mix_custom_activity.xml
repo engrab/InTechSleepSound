@@ -53,7 +53,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.arapps.sleepsound.relaxandsleep.naturesounds.customView.WrapContentViewPager
+    <com.arapps.sleepsound.relaxandsleep.naturesounds.customView.BasePagerWrapContent
         android:id="@+id/custom_sounds_svp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_250sdp"

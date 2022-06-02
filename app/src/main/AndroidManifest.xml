@@ -12,7 +12,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Utils.MyApplication"
+        android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.utils.MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:icon="@drawable/icon"
@@ -24,33 +24,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.DeleteCustomMixActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.DeleteCustomMixActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.SaveCustomActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.SaveCustomActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.SetTimeActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.PrivacyPolicyActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.SetCustomTimeActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.BedReminderActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.SetTimeActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.SplashActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.PrivacyPolicyActivityBase"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.SetCustomTimeActivityBase"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.BedReminderActivityBase"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.SplashActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
@@ -62,33 +62,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.MainActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.MainActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.SetBedTimeActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.SetBedTimeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.MixCustomActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.MixCustomActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.CustomSelectActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.CustomSelectActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.PlayActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.PlayActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Activity.AdjustMixActivity"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.ui.AdjustMixActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
@@ -104,7 +104,7 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-        <receiver android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Receiver.BedRemindReceiver">
+        <receiver android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.receiver.ReceiverBedRemind">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.TIME_SET" />
@@ -118,11 +118,11 @@
         </receiver>
 
         <service
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Services.SoundPlayerService"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.Receiver.RemindService"
+            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.receiver.ServiceRemind"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
