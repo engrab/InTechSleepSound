@@ -7,9 +7,9 @@
     <color name="browser_actions_bg_grey">#f5f5f5</color>
     <color name="colorPrimary">@color/gradient1</color>
     <color name="colorPrimaryDark">@color/gradient8</color>
-    <color name="gradient1">#1a0d23</color>
-    <color name="gradient8">#200D2E</color>
-    <color name="tab_bg">#1a0d23</color>
+    <color name="gradient1">#000217</color>
+    <color name="gradient8">#000003</color>
+    <color name="tab_bg">#000217</color>
     <color name="tab_selected">@color/white</color>
     <color name="tab_unselected">#440871</color>
     <color name="transparent">#00000000</color>
