@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.arapps.sleepsound.relaxandsleep.naturesounds">
+    package="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.utils.MyApplication"
+        android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.utils.MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
@@ -21,36 +21,36 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.ExitActivity"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.ExitActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.DeleteCustomMixActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.DeleteCustomMixActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.SaveCustomActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.SaveCustomActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.SetTimeActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.SetTimeActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.PrivacyPolicyActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.PrivacyPolicyActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.SetCustomTimeActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.SetCustomTimeActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.BedReminderActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.BedReminderActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.SplashActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.SplashActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -63,33 +63,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.MainActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.SetBedTimeActivity"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.SetBedTimeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.MixCustomActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.MixCustomActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.CustomSelectActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.CustomSelectActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.PlayActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.PlayActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.AdjustMixActivityBase"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.ui.AdjustMixActivityBase"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -106,7 +106,7 @@
             android:required="false" />
 
         <receiver
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.receiver.ReceiverBedRemind"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.receiver.ReceiverBedRemind"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -121,17 +121,17 @@
         </receiver>
 
         <service
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.services.SoundPlayerService"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.services.SoundPlayerService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name="com.arapps.sleepsound.relaxandsleep.naturesounds.receiver.ServiceRemind"
+            android:name="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.receiver.ServiceRemind"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.arapps.sleepsound.relaxandsleep.naturesounds.mobileadsinitprovider"
+            android:authorities="com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 

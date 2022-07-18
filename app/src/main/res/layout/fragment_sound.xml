@@ -147,7 +147,7 @@
             app:srcCompat="@drawable/vector_ic_sound" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.arapps.sleepsound.relaxandsleep.naturesounds.customView.BasePagerWrapContent
+    <com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises.customView.BasePagerWrapContent
         android:id="@+id/fragment_custom_vp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_310sdp"

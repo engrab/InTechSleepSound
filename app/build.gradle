@@ -7,7 +7,7 @@ android {
 //    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.arapps.sleepsound.relaxandsleep.naturesounds"
+        applicationId "com.apphubstudio.sleepingmusic.rainsounds.relaxmusic.whitenoises"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
